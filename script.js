@@ -24,7 +24,7 @@ function preventDefault(e) {
 	// calculate scroll factor
 	const scrollFactorAtTop = 0.8
 	const scrollFactorAtBottom = 0.08
-	const rateOfScrollFactorChange = 2
+	const rateOfScrollFactorChange = 3
 	scrollFactor = 
 		scrollFactorAtBottom
 		+ 
@@ -77,6 +77,13 @@ function preventDefault(e) {
 	}
 
 	console.log(`currentlyAt: ${Math.round(currentlyAt)}px | scrollFactor: ${scrollFactor}`)
+
+	// show #aboutProject
+	const scrollFactorThatIsNoticeablyLow = .15
+	const aboutdiv = document.getElementById('aboutProject')
+	if(scrollFactor < scrollFactorThatIsNoticeablyLow) 
+		aboutdiv.style.bottom = `0rem`;
+	else aboutdiv.style.bottom = `-25vh`;
 }
 
 
