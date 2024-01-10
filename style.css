@@ -86,9 +86,21 @@ p {
     text-align: left;
 }
 
-p#aboutProject {
-    width: calc(90vw - 2rem);
-    background-color: #fcc000;
+#aboutProject {
+    position: fixed;
+    right: 0; left: 0;
+    bottom: /*placeholder */ calc(-8rem);
+    transition: bottom 600ms ease-in 0ms;
+    /* background-color: #fcc000; */
+    text-align: center;
+}
+
+#aboutProject p {
+    background-color: rgba(252, 192, 0, .95);
+    border: 4px solid white;
+    width: calc(90% - 8px);
+    max-width: calc(40rem - 8rem - 8px);
+    margin-left: auto; margin-right: auto;
     border-radius: .5rem;
     padding: 1rem;
 }
