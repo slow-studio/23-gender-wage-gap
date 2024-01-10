@@ -30,7 +30,7 @@ bar.style.width = `${progress * 100}%`
 
 	// calculate scroll factor
 	const scrollFactorAtTop = 0.8
-	const scrollFactorAtBottom = 0.08
+	const scrollFactorAtBottom = 0.1
 	const rateOfScrollFactorChange = 3
 	scrollFactor = 
 		scrollFactorAtBottom
@@ -86,7 +86,7 @@ bar.style.width = `${progress * 100}%`
 	console.log(`currentlyAt: ${Math.round(currentlyAt)}px | scrollFactor: ${scrollFactor}`)
 
 	// show #aboutProject
-	const scrollFactorThatIsNoticeablyLow = .15
+	const scrollFactorThatIsNoticeablyLow = .183
 	const aboutdiv = document.getElementById('aboutProject')
 	if(scrollFactor < scrollFactorThatIsNoticeablyLow) 
 		aboutdiv.style.bottom = `0rem`;
