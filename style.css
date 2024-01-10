@@ -87,6 +87,7 @@ p {
 }
 
 p#aboutProject {
+    width: calc(90vw - 2rem);
     background-color: #fcc000;
     border-radius: .5rem;
     padding: 1rem;
