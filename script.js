@@ -90,7 +90,7 @@ bar.style.width = `${progress * 100}%`
 	const aboutdiv = document.getElementById('aboutProject')
 	if(scrollFactor < scrollFactorThatIsNoticeablyLow) 
 		aboutdiv.style.bottom = `0rem`;
-	else aboutdiv.style.bottom = `-25vh`;
+	else aboutdiv.style.bottom = `-100vh`;
 }
 
 
