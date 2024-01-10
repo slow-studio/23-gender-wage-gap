@@ -86,7 +86,7 @@ p {
     text-align: left;
 }
 
-p.aboutProject {
+p#aboutProject {
     background-color: #fcc000;
     border-radius: .5rem;
     padding: 1rem;
