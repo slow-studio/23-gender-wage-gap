@@ -8,6 +8,7 @@ function documentHeight() { return parseInt(document.documentElement.scrollHeigh
 function scrollableHeight() { return parseInt(documentHeight() - windowHeight) }
 console.log(`documentHeight: \t\t${documentHeight()}\nwindowHeight: \t\t\t ${windowHeight}\n∴ scrollableHeight: \t${scrollableHeight()}`)
 
+
 // during a touchmove event, these record the y position of a touch 
 let oldy = 0
 let oldtime = 0
@@ -15,8 +16,14 @@ let newy = 0
 let newtime = 0
 let delta = newy - oldy
 
+
 /* function to define custom scroll-behaviour on mouse/tap events */
 function preventDefault(e) {
+
+	// for the progress bar
+const bar = document.getElementById("bar")
+let progress = document.documentElement.scrollTop / scrollableHeight()
+bar.style.width = `${progress * 100}%`
 
 	// calculate where the person is currentlyAt
 	let currentlyAt = document.documentElement.scrollTop
