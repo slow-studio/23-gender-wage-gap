@@ -20,11 +20,6 @@ let delta = newy - oldy
 /* function to define custom scroll-behaviour on mouse/tap events */
 function preventDefault(e) {
 
-	// for the progress bar
-const bar = document.getElementById("bar")
-let progress = document.documentElement.scrollTop / scrollableHeight()
-bar.style.width = `${progress * 100}%`
-
 	// calculate where the person is currentlyAt
 	let currentlyAt = document.documentElement.scrollTop
 
