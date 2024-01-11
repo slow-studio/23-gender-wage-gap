@@ -93,6 +93,7 @@ p {
     transition: bottom 600ms ease-in 0ms;
     /* background-color: #fcc000; */
     text-align: center;
+    font-size: 75%;
 }
 
 #aboutProject p {
@@ -112,8 +113,10 @@ img {
     margin-bottom: 1rem;
 }
 
-img.hero{
-    /* max-width: none; */
+img.fullWidthImage {
+    position: relative;
+    width: 100%;
+    max-width: 60rem;
 }
 
 footer {
