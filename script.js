@@ -26,7 +26,7 @@ function preventDefault(e) {
 	// calculate scroll factor
 	const scrollFactorAtTop = 1
 	const scrollFactorAtBottom = 0.1
-	const rateOfScrollFactorChange = 3
+	const rateOfScrollFactorChange = 2
 	scrollFactor = 
 		scrollFactorAtBottom
 		+ 
