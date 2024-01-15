@@ -1,7 +1,7 @@
 console.log("script.js loaded.")
 
 // variables and helpers
-let scrollFactor = 0.1
+let scrollFactor = 1
 console.log(`scrollFactor (at start): ${scrollFactor}`)
 const windowHeight = window.innerHeight
 function documentHeight() { return parseInt(document.documentElement.scrollHeight) }
@@ -28,6 +28,20 @@ function preventDefault(e) {
 	const scrollFactorAtBottom = 0.1
 	const rateOfScrollFactorChange = 2
 
+	// show #aboutProject
+	const scrollFactorThatIsNoticeablyLow = .195
+	const aboutdiv = document.getElementById('aboutProject')
+	if(scrollFactor < scrollFactorThatIsNoticeablyLow) 
+		{
+		aboutdiv.style.bottom = `0rem`;
+		keepSlowScrollFactor = true;
+		}		
+	else 
+		{
+		aboutdiv.style.bottom = `-100vh`;
+		keepSlowScrollFactor = false;
+		}
+
 	if( keepSlowScrollFactor == false)
 	{
 		scrollFactor = 
@@ -47,7 +61,7 @@ function preventDefault(e) {
 	}
 
 	else
-		scrollFactor = scrollFactorThatIsNoticeablyLow
+		scrollFactor = scrollFactorThatIsNoticeablyLow * .95
 
 	// and: scroll slowly (reduced by the scrollFactor variable)
 	switch (e.type) {
@@ -88,14 +102,6 @@ function preventDefault(e) {
 
 	console.log(`currentlyAt: ${Math.round(currentlyAt)}px | scrollFactor: ${scrollFactor}`)
 
-	// show #aboutProject
-	const scrollFactorThatIsNoticeablyLow = .183
-	const aboutdiv = document.getElementById('aboutProject')
-	if(scrollFactor < scrollFactorThatIsNoticeablyLow) 
-		{
-		aboutdiv.style.bottom = `0rem`;
-		}		
-	else aboutdiv.style.bottom = `-100vh`;
 }
 
 
