@@ -15,7 +15,7 @@ let oldtime = 0
 let newy = 0
 let newtime = 0
 let delta = newy - oldy
-
+let keepSlowScrollFactor = false;
 
 /* function to define custom scroll-behaviour on mouse/tap events */
 function preventDefault(e) {
@@ -27,7 +27,10 @@ function preventDefault(e) {
 	const scrollFactorAtTop = 1
 	const scrollFactorAtBottom = 0.1
 	const rateOfScrollFactorChange = 2
-	scrollFactor = 
+
+	if( keepSlowScrollFactor == false)
+	{
+		scrollFactor = 
 		scrollFactorAtBottom
 		+ 
 		(
@@ -38,9 +41,13 @@ function preventDefault(e) {
 				(scrollableHeight() - currentlyAt) / scrollableHeight(),rateOfScrollFactorChange
 			)
 		)
-	// round the value to make it readable in the console
-	const decimalPlaces = 4
-	scrollFactor = Math.round(Math.pow(10,decimalPlaces)*(scrollFactor))/Math.pow(10,decimalPlaces)
+		// round the value to make it readable in the console
+		const decimalPlaces = 4
+		scrollFactor = Math.round(Math.pow(10,decimalPlaces)*(scrollFactor))/Math.pow(10,decimalPlaces)
+	}
+
+	else
+		scrollFactor = scrollFactorThatIsNoticeablyLow
 
 	// and: scroll slowly (reduced by the scrollFactor variable)
 	switch (e.type) {
@@ -73,6 +80,7 @@ function preventDefault(e) {
 			if(Math.abs(delta)>=120) delta = 0
 			e.preventDefault()
 			window.scrollBy({ top: -delta * scrollFactor/*, behavior: 'smooth'*/ })
+			console.log(scrollFactor)
 			oldy = newy
 			oldtime = newtime
 			break;
@@ -84,7 +92,9 @@ function preventDefault(e) {
 	const scrollFactorThatIsNoticeablyLow = .183
 	const aboutdiv = document.getElementById('aboutProject')
 	if(scrollFactor < scrollFactorThatIsNoticeablyLow) 
+		{
 		aboutdiv.style.bottom = `0rem`;
+		}		
 	else aboutdiv.style.bottom = `-100vh`;
 }
 
