@@ -22,7 +22,7 @@ body > * {
 
 #header {
     z-index: 10;
-    width: 100vw;
+    width: 90vw;
     height: calc(var(--headerheight) - 1px);
     margin: 0;
     padding-top: var(--headerPaddingTop);
