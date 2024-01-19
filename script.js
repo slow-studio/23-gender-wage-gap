@@ -2,6 +2,7 @@
 
 /* variables and helpers */ 
 
+const footerDiv = document.getElementById('footer')
 let scrollFactor = /* placeholder */ 1
 // console.log(`scrollFactor (at start): ${scrollFactor}`)
 
@@ -40,7 +41,12 @@ function preventDefault(e) {
 	// show #aboutProject
 	const scrollFactorThatIsNoticeablyLow = .195
 	const aboutdiv = document.getElementById('aboutProject')
-	if (scrollFactor < scrollFactorThatIsNoticeablyLow) {
+	if (
+		scrollFactor < scrollFactorThatIsNoticeablyLow
+		&&
+		// we've reached the #footer
+		scrollableHeight() - document.documentElement.scrollTop - Number((getComputedStyle(footerDiv).height).slice(0,-2)) > 0
+	) {
 		aboutdiv.style.bottom = `0rem`;
 		keepSlowScrollFactor = true;
 	}
