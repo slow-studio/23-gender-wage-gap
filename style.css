@@ -6,6 +6,7 @@
     --paper: rgb(255, 250, 240);
     --paper-transparent: rgba(255,250,240,.9);
     --blue: rgb(169,203,227);
+    --yellow: #ffcc00;
 }
 
 body {
@@ -122,7 +123,7 @@ p {
 }
 
 #aboutProject p {
-    background-color: var(--blue);
+    background-color: var(--yellow);
     border-top: 4px solid var(--paper);
     border-bottom: 4px solid var(--paper);
     width: calc(90%);
