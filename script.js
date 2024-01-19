@@ -1,8 +1,8 @@
-console.log("script.js loaded.")
+// console.log("script.js loaded.")
+// console.log(`scrollFactor (at start): ${scrollFactor}`)
 
 // variables and helpers
 let scrollFactor = 1
-console.log(`scrollFactor (at start): ${scrollFactor}`)
 const windowHeight = window.innerHeight
 function documentHeight() { return parseInt(document.documentElement.scrollHeight) }
 function scrollableHeight() { return parseInt(documentHeight() - windowHeight) }
