@@ -1,8 +1,10 @@
 // console.log("script.js loaded.")
+
+/* variables and helpers */ 
+
+let scrollFactor = /* placeholder */ 1
 // console.log(`scrollFactor (at start): ${scrollFactor}`)
 
-// variables and helpers
-let scrollFactor = 1
 const windowHeight = window.innerHeight
 
 function documentHeight() { 
@@ -117,7 +119,7 @@ function preventDefault(e) {
 // shift: 16
 var keys = { 32: 1, 38: 1, 40: 1 };
 
-/* function to define custom scroll-behaviour (when keyboard keys are pressed) */
+// define custom scroll-behaviour (when keyboard keys are pressed)
 function preventDefaultForScrollKeys(e) {
 	if (keys[e.keyCode]) {
 		preventDefault(e);
@@ -137,7 +139,7 @@ try {
 var wheelOpt = supportsPassive ? { passive: false } : false;
 var wheelEvent = 'onwheel' in document.createElement('div') ? 'wheel' : 'mousewheel';
 
-// call this to Enable
+// call this to undo disableScroll()'s handiwork
 function enableScroll() {
 	window.removeEventListener('DOMMouseScroll', preventDefault, false);
 	window.removeEventListener(wheelEvent, preventDefault, wheelOpt);
@@ -145,8 +147,7 @@ function enableScroll() {
 	window.removeEventListener('keydown', preventDefaultForScrollKeys, false);
 }
 
-/* this function attached eventListeners to the window. whenever a scroll (or similar) event is detected, these eventListeners call the preventDefault() funtion.
-*/
+// this function attached eventListeners to the window. whenever a scroll (or similar) event is detected, these eventListeners call the preventDefault() funtion.
 function disableScroll() {
 	console.log(`disableScroll() has worked its magic.`)
 	window.addEventListener('DOMMouseScroll', preventDefault, false); // older FF
