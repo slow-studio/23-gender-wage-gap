@@ -97,7 +97,7 @@ function preventDefault(e) {
 		case ('wheel'):
 			console.log(e.type)
 			e.preventDefault(); // prevent default scroll/touchmove behaviour
-			window.scrollBy({ top: e.deltaY * scrollFactor/*, behavior: 'smooth'*/ });
+			window.scrollBy({ top: .5 * e.deltaY * scrollFactor/*, behavior: 'smooth'*/ });
 			break;
 		case ('touchmove'):
 			newy = e.touches[0].clientY
