@@ -40,33 +40,30 @@ function preventDefault(e) {
 	// show #aboutProject
 	const scrollFactorThatIsNoticeablyLow = .195
 	const aboutdiv = document.getElementById('aboutProject')
-	if(scrollFactor < scrollFactorThatIsNoticeablyLow) 
-		{
+	if (scrollFactor < scrollFactorThatIsNoticeablyLow) {
 		aboutdiv.style.bottom = `0rem`;
 		keepSlowScrollFactor = true;
-		}		
-	else 
-		{
+	}
+	else {
 		aboutdiv.style.bottom = `-100vh`;
 		keepSlowScrollFactor = false;
-		}
+	}
 
-	if( keepSlowScrollFactor == false)
-	{
-		scrollFactor = 
-		scrollFactorAtBottom
-		+ 
-		(
-			(scrollFactorAtTop - scrollFactorAtBottom)
-			* 
-			/* this is the basic calculation for scrollFactor */ 
-			Math.pow(
-				(scrollableHeight() - currentlyAt) / scrollableHeight(),rateOfScrollFactorChange
+	if (keepSlowScrollFactor == false) {
+		scrollFactor =
+			scrollFactorAtBottom
+			+
+			(
+				(scrollFactorAtTop - scrollFactorAtBottom)
+				*
+				/* this is the basic calculation for scrollFactor */
+				Math.pow(
+					(scrollableHeight() - currentlyAt) / scrollableHeight(), rateOfScrollFactorChange
+				)
 			)
-		)
 		// round the value to make it readable in the console
 		const decimalPlaces = 4
-		scrollFactor = Math.round(Math.pow(10,decimalPlaces)*(scrollFactor))/Math.pow(10,decimalPlaces)
+		scrollFactor = Math.round(Math.pow(10, decimalPlaces) * (scrollFactor)) / Math.pow(10, decimalPlaces)
 	}
 
 	else
@@ -100,7 +97,7 @@ function preventDefault(e) {
 			newy = e.touches[0].clientY
 			newtime = e.timeStamp
 			delta = newy - oldy
-			if(Math.abs(delta)>=120) delta = 0
+			if (Math.abs(delta) >= 120) delta = 0
 			e.preventDefault()
 			window.scrollBy({ top: -delta * scrollFactor/*, behavior: 'smooth'*/ })
 			console.log(scrollFactor)
