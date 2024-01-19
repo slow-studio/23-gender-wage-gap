@@ -50,9 +50,6 @@ function preventDefault(e) {
 				(scrollableHeight() - currentlyAt) / scrollableHeight(), rateOfScrollFactorChange
 			)
 		)
-	// round the value to make it readable in the console
-	const decimalPlaces = 4
-	scrollFactor = Math.round(Math.pow(10, decimalPlaces) * (scrollFactor)) / Math.pow(10, decimalPlaces)
 
 	// show #aboutProject
 	const aboutdiv = document.getElementById('aboutProject')
@@ -89,7 +86,6 @@ function preventDefault(e) {
 			console.log(`${keyPressed} was pressed.`)
 			break;
 		case ('wheel'):
-			console.log(e.type)
 			e.preventDefault(); // prevent default scroll/touchmove behaviour
 			window.scrollBy({ top: .5 * e.deltaY * scrollFactor/*, behavior: 'smooth'*/ });
 			break;
@@ -100,13 +96,16 @@ function preventDefault(e) {
 			if (Math.abs(delta) >= 120) delta = 0
 			e.preventDefault()
 			window.scrollBy({ top: -delta * scrollFactor/*, behavior: 'smooth'*/ })
-			console.log(scrollFactor)
 			oldy = newy
 			oldtime = newtime
 			break;
 	}
+	
+	// round the value to make it readable in the console
+	const decimalPlaces = 4
+	scrollFactor = Math.round(Math.pow(10, decimalPlaces) * (scrollFactor)) / Math.pow(10, decimalPlaces)
 
-	console.log(`currentlyAt: ${Math.round(currentlyAt)}px | scrollFactor: ${scrollFactor}`)
+	console.log(`${e.type} | at ${Math.round(currentlyAt)} of ${scrollableHeight()} px| scrollFactor: ${scrollFactor}`)
 
 }
 
