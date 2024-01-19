@@ -4,8 +4,15 @@
 // variables and helpers
 let scrollFactor = 1
 const windowHeight = window.innerHeight
-function documentHeight() { return parseInt(document.documentElement.scrollHeight) }
-function scrollableHeight() { return parseInt(documentHeight() - windowHeight) }
+
+function documentHeight() { 
+	return parseInt(document.documentElement.scrollHeight) 
+}
+
+function scrollableHeight() { 
+	return parseInt(documentHeight() - windowHeight) 
+}
+
 console.log(`documentHeight: \t\t${documentHeight()}\nwindowHeight: \t\t\t ${windowHeight}\n∴ scrollableHeight: \t${scrollableHeight()}`)
 
 
