@@ -33,7 +33,7 @@ function preventDefault(e) {
 	let currentlyAt = document.documentElement.scrollTop
 
 	// variables for calculating scroll factor
-	const scrollFactorAtTop = 1.2
+	const scrollFactorAtTop = 1
 	const scrollFactorAtBottom = 0.1
 	const rateOfScrollFactorChange = 2
 	const scrollFactorThatIsNoticeablyLow = .195
