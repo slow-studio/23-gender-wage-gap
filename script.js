@@ -25,7 +25,6 @@ let oldtime = 0
 let newy = 0
 let newtime = 0
 let delta = newy - oldy
-let keepSlowScrollFactor = false;
 
 /* function to define custom scroll-behaviour on mouse/tap events */
 function preventDefault(e) {
@@ -33,13 +32,29 @@ function preventDefault(e) {
 	// calculate where the person is currentlyAt
 	let currentlyAt = document.documentElement.scrollTop
 
-	// calculate scroll factor
+	// variables for calculating scroll factor
 	const scrollFactorAtTop = 1.2
 	const scrollFactorAtBottom = 0.1
 	const rateOfScrollFactorChange = 2
+	const scrollFactorThatIsNoticeablyLow = .195
+
+	// calculate scrollFactor
+	scrollFactor =
+		scrollFactorAtBottom
+		+
+		(
+			(scrollFactorAtTop - scrollFactorAtBottom)
+			*
+			/* this is the basic calculation for scrollFactor */
+			Math.pow(
+				(scrollableHeight() - currentlyAt) / scrollableHeight(), rateOfScrollFactorChange
+			)
+		)
+	// round the value to make it readable in the console
+	const decimalPlaces = 4
+	scrollFactor = Math.round(Math.pow(10, decimalPlaces) * (scrollFactor)) / Math.pow(10, decimalPlaces)
 
 	// show #aboutProject
-	const scrollFactorThatIsNoticeablyLow = .195
 	const aboutdiv = document.getElementById('aboutProject')
 	if (
 		scrollFactor < scrollFactorThatIsNoticeablyLow
@@ -48,32 +63,11 @@ function preventDefault(e) {
 		scrollableHeight() - document.documentElement.scrollTop - Number((getComputedStyle(footerDiv).height).slice(0,-2)) > 0
 	) {
 		aboutdiv.style.bottom = `0rem`;
-		keepSlowScrollFactor = true;
+		scrollFactor = scrollFactorThatIsNoticeablyLow * .95
 	}
 	else {
 		aboutdiv.style.bottom = `-100vh`;
-		keepSlowScrollFactor = false;
 	}
-
-	if (keepSlowScrollFactor == false) {
-		scrollFactor =
-			scrollFactorAtBottom
-			+
-			(
-				(scrollFactorAtTop - scrollFactorAtBottom)
-				*
-				/* this is the basic calculation for scrollFactor */
-				Math.pow(
-					(scrollableHeight() - currentlyAt) / scrollableHeight(), rateOfScrollFactorChange
-				)
-			)
-		// round the value to make it readable in the console
-		const decimalPlaces = 4
-		scrollFactor = Math.round(Math.pow(10, decimalPlaces) * (scrollFactor)) / Math.pow(10, decimalPlaces)
-	}
-
-	else
-		scrollFactor = scrollFactorThatIsNoticeablyLow * .95
 
 	// and: scroll slowly (reduced by the scrollFactor variable)
 	switch (e.type) {
