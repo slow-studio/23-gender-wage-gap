@@ -3,6 +3,8 @@
 :root {
     --headerheight: 2rem;
     --headerPaddingTop: .5rem;
+    --paper: rgb(255, 250, 240);
+    --paper-transparent: rgba(255,250,240,.9);
 }
 
 body {
@@ -11,7 +13,7 @@ body {
     line-height: 1.5;
     font-size:150%;
     color: #222;
-    background-color: rgb(255, 250, 240);
+    background-color: var(--paper);
 }
 
 body > * {
@@ -26,7 +28,7 @@ body > * {
     height: calc(var(--headerheight) - 1px);
     margin: 0;
     padding-top: var(--headerPaddingTop);
-    background-color: rgba(255,250,240,.9);
+    background-color: var(--paper-transparent);
     position: fixed;
     top:0;
     left: 0;
@@ -106,7 +108,7 @@ p {
 
 #aboutProject p {
     background-color: rgba(252, 192, 0, .95);
-    border: 4px solid white;
+    border: 4px solid var(--paper-transparent);
     width: calc(90% - 8px);
     max-width: calc(40rem - 8rem - 8px);
     margin-left: auto; margin-right: auto;
