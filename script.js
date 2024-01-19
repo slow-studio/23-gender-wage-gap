@@ -1,11 +1,21 @@
-console.log("script.js loaded.")
+// console.log("script.js loaded.")
 
-// variables and helpers
-let scrollFactor = 0.1
-console.log(`scrollFactor (at start): ${scrollFactor}`)
+/* variables and helpers */ 
+
+const footerDiv = document.getElementById('footer')
+let scrollFactor = /* placeholder */ 1
+// console.log(`scrollFactor (at start): ${scrollFactor}`)
+
 const windowHeight = window.innerHeight
-function documentHeight() { return parseInt(document.documentElement.scrollHeight) }
-function scrollableHeight() { return parseInt(documentHeight() - windowHeight) }
+
+function documentHeight() { 
+	return parseInt(document.documentElement.scrollHeight) 
+}
+
+function scrollableHeight() { 
+	return parseInt(documentHeight() - windowHeight) 
+}
+
 console.log(`documentHeight: \t\t${documentHeight()}\nwindowHeight: \t\t\t ${windowHeight}\n∴ scrollableHeight: \t${scrollableHeight()}`)
 
 
@@ -16,31 +26,48 @@ let newy = 0
 let newtime = 0
 let delta = newy - oldy
 
-
 /* function to define custom scroll-behaviour on mouse/tap events */
 function preventDefault(e) {
 
 	// calculate where the person is currentlyAt
 	let currentlyAt = document.documentElement.scrollTop
 
-	// calculate scroll factor
-	const scrollFactorAtTop = 1
+	// variables for calculating scroll factor
+	const scrollFactorAtTop = 1.2
 	const scrollFactorAtBottom = 0.1
 	const rateOfScrollFactorChange = 2
-	scrollFactor = 
+	const scrollFactorThatIsNoticeablyLow = .195
+
+	// calculate scrollFactor
+	scrollFactor =
 		scrollFactorAtBottom
-		+ 
+		+
 		(
 			(scrollFactorAtTop - scrollFactorAtBottom)
-			* 
-			/* this is the basic calculation for scrollFactor */ 
+			*
+			/* this is the basic calculation for scrollFactor */
 			Math.pow(
-				(scrollableHeight() - currentlyAt) / scrollableHeight(),rateOfScrollFactorChange
+				(scrollableHeight() - currentlyAt) / scrollableHeight(), rateOfScrollFactorChange
 			)
 		)
 	// round the value to make it readable in the console
 	const decimalPlaces = 4
-	scrollFactor = Math.round(Math.pow(10,decimalPlaces)*(scrollFactor))/Math.pow(10,decimalPlaces)
+	scrollFactor = Math.round(Math.pow(10, decimalPlaces) * (scrollFactor)) / Math.pow(10, decimalPlaces)
+
+	// show #aboutProject
+	const aboutdiv = document.getElementById('aboutProject')
+	if (
+		scrollFactor < scrollFactorThatIsNoticeablyLow
+		&&
+		// we've reached the #footer
+		scrollableHeight() - document.documentElement.scrollTop - Number((getComputedStyle(footerDiv).height).slice(0,-2)) > 0
+	) {
+		aboutdiv.style.bottom = `0rem`;
+		scrollFactor = scrollFactorThatIsNoticeablyLow * .95
+	}
+	else {
+		aboutdiv.style.bottom = `-100vh`;
+	}
 
 	// and: scroll slowly (reduced by the scrollFactor variable)
 	switch (e.type) {
@@ -64,15 +91,16 @@ function preventDefault(e) {
 		case ('wheel'):
 			console.log(e.type)
 			e.preventDefault(); // prevent default scroll/touchmove behaviour
-			window.scrollBy({ top: e.deltaY * scrollFactor/*, behavior: 'smooth'*/ });
+			window.scrollBy({ top: .5 * e.deltaY * scrollFactor/*, behavior: 'smooth'*/ });
 			break;
 		case ('touchmove'):
 			newy = e.touches[0].clientY
 			newtime = e.timeStamp
 			delta = newy - oldy
-			if(Math.abs(delta)>=120) delta = 0
+			if (Math.abs(delta) >= 120) delta = 0
 			e.preventDefault()
 			window.scrollBy({ top: -delta * scrollFactor/*, behavior: 'smooth'*/ })
+			console.log(scrollFactor)
 			oldy = newy
 			oldtime = newtime
 			break;
@@ -80,12 +108,6 @@ function preventDefault(e) {
 
 	console.log(`currentlyAt: ${Math.round(currentlyAt)}px | scrollFactor: ${scrollFactor}`)
 
-	// show #aboutProject
-	const scrollFactorThatIsNoticeablyLow = .183
-	const aboutdiv = document.getElementById('aboutProject')
-	if(scrollFactor < scrollFactorThatIsNoticeablyLow) 
-		aboutdiv.style.bottom = `0rem`;
-	else aboutdiv.style.bottom = `-100vh`;
 }
 
 
@@ -94,7 +116,7 @@ function preventDefault(e) {
 // shift: 16
 var keys = { 32: 1, 38: 1, 40: 1 };
 
-/* function to define custom scroll-behaviour (when keyboard keys are pressed) */
+// define custom scroll-behaviour (when keyboard keys are pressed)
 function preventDefaultForScrollKeys(e) {
 	if (keys[e.keyCode]) {
 		preventDefault(e);
@@ -114,7 +136,7 @@ try {
 var wheelOpt = supportsPassive ? { passive: false } : false;
 var wheelEvent = 'onwheel' in document.createElement('div') ? 'wheel' : 'mousewheel';
 
-// call this to Enable
+// call this to undo disableScroll()'s handiwork
 function enableScroll() {
 	window.removeEventListener('DOMMouseScroll', preventDefault, false);
 	window.removeEventListener(wheelEvent, preventDefault, wheelOpt);
@@ -122,8 +144,7 @@ function enableScroll() {
 	window.removeEventListener('keydown', preventDefaultForScrollKeys, false);
 }
 
-/* this function attached eventListeners to the window. whenever a scroll (or similar) event is detected, these eventListeners call the preventDefault() funtion.
-*/
+// this function attached eventListeners to the window. whenever a scroll (or similar) event is detected, these eventListeners call the preventDefault() funtion.
 function disableScroll() {
 	console.log(`disableScroll() has worked its magic.`)
 	window.addEventListener('DOMMouseScroll', preventDefault, false); // older FF
