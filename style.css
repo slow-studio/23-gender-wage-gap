@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
 :root {
     --headerheight: 2rem;
     --headerPaddingTop: .5rem;
@@ -13,7 +15,7 @@ body {
 }
 
 body > * {
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: 'EB Garamond', Georgia, 'Times New Roman', Times, serif;
     padding-left: 5vw;
     padding-right: 5vw;
 }
