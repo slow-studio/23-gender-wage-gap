@@ -107,6 +107,7 @@ function preventDefault(e) {
 				// so , we ignore this delta value, and do nothing.
 				console.log(`\n\n\n\nwon't execute scrollBy for this next value of delta\n(because it is likely to cause jumpy behaviour)`)
 			} else {
+				if(delta > 0 /* person is trying to scroll up */) scrollFactor = scrollFactorAtTop
 				window.scrollBy({ top: -delta * scrollFactor/*, behavior: 'smooth'*/ })
 			}
 			const d = new Date()
