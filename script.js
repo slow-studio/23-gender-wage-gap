@@ -70,7 +70,6 @@ function preventDefault(e) {
 
 	// and: scroll slowly (reduced by the scrollFactor variable)
 	console.log(`\n`)
-	if(currentlyAt > window.innerHeight * 1.2) { 
 	switch (e.type) {
 		case ('keydown'):
 			e.preventDefault(); // prevent default scroll/touchmove behaviour
@@ -123,7 +122,7 @@ function preventDefault(e) {
 	scrollFactor = Math.round(Math.pow(10, decimalPlaces) * (scrollFactor)) / Math.pow(10, decimalPlaces)
 
 	console.log(`${e.type} | at ${Math.round(currentlyAt)} of ${scrollableHeight()} px| scrollFactor: ${scrollFactor}`)
-	}
+
 }
 
 
