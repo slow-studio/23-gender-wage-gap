@@ -158,5 +158,8 @@ function disableScroll() {
 disableScroll();
 
 document.body.onload = function() {
-	setInterval(() => document.body.style.opacity = 1, 1500)
+	document.body.style.display = 'block'
+	setInterval(() => {
+		document.body.style.opacity = 1
+	}, 1500)
 }
