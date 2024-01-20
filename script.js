@@ -36,6 +36,7 @@ function preventDefault(e) {
 	const scrollFactorAtTop = 1
 	const scrollFactorAtBottom = 0.1
 	const rateOfScrollFactorChange = 2
+	const showAboutProjectAt = .25
 	const scrollFactorThatIsNoticeablyLow = .195
 
 	// calculate scrollFactor
@@ -54,16 +55,17 @@ function preventDefault(e) {
 	// show #aboutProject
 	const aboutdiv = document.getElementById('aboutProject')
 	if (
-		scrollFactor < scrollFactorThatIsNoticeablyLow
+		scrollFactor < showAboutProjectAt
 		&&
 		// we've reached the #footer
 		scrollableHeight() - document.documentElement.scrollTop - Number((getComputedStyle(footerDiv).height).slice(0,-2)) > 0
 	) {
 		aboutdiv.style.bottom = `0rem`;
-		scrollFactor = scrollFactorThatIsNoticeablyLow * .95
-	}
-	else {
+	} else {
 		aboutdiv.style.bottom = `-100vh`;
+	}
+	if (scrollFactor < scrollFactorThatIsNoticeablyLow) {
+		scrollFactor = scrollFactorThatIsNoticeablyLow * .95
 	}
 
 	// and: scroll slowly (reduced by the scrollFactor variable)
