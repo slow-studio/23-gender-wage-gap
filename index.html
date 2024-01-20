@@ -183,6 +183,19 @@
 	</div><!-- end of #content -->
 
 	<script src="script.js"></script>
+
+	<!-- show #mobilenotice -->
+	<script>
+		document.body.onload = function() {
+			if(window.innerWidth > 640) {
+				document.getElementById('mobilenotice').style.display = 'block'	
+			}
+			document.body.style.display = 'block'
+			setInterval(() => {
+				document.body.style.opacity = 1
+			}, 1500)
+		}
+	</script>
 </body>
 
 </html>

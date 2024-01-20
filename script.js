@@ -170,13 +170,3 @@ function disableScroll() {
 
 // when the script loads, call the disableScroll() function
 disableScroll();
-
-document.body.onload = function() {
-	if(window.innerWidth > 640) {
-		document.getElementById('mobilenotice').style.display = 'block'	
-	}
-	document.body.style.display = 'block'
-	setInterval(() => {
-		document.body.style.opacity = 1
-	}, 1500)
-}
