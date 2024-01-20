@@ -95,7 +95,10 @@ function preventDefault(e) {
 			newy = e.touches[0].clientY
 			newtime = e.timeStamp
 			delta = newy - oldy
-			if (Math.abs(delta) >= 120) delta = 0
+			const deltalimit = 120
+			if (Math.abs(delta) >= deltalimit) {
+				delta = deltalimit * delta / Math.abs(delta)
+			}
 			e.preventDefault()
 			window.scrollBy({ top: -delta * scrollFactor/*, behavior: 'smooth'*/ })
 			oldy = newy
