@@ -105,18 +105,13 @@ function preventDefault(e) {
 				// then this is likely to be the moment the person just began scrolling,
 				// and we're likely to see a jumpy behaviour due to an abnormal 'delta' value,
 				// so , we ignore this delta value, and do nothing.
-				console.log(`\n\n\n\n---------------------------------------------------\n\n\n\nwon't execute scrollBy for this next value of delta\n(because it is likely to cause jumpy behaviour)`)
-			} 
-			else {
+				console.log(`\n\n\n\nwon't execute scrollBy for this next value of delta\n(because it is likely to cause jumpy behaviour)`)
+			} else {
 				if(delta > 0 /* person is trying to scroll up */) scrollFactor = scrollFactorAtTop
-				console.log(`scrollTo wants to go to: ${currentlyAt + (-delta * scrollFactor)}`)
 				window.scrollBy({ top: -delta * scrollFactor/*, behavior: 'smooth'*/ })
-				console.log(`currently at: ${document.documentElement.scrollTop}`)
 			}
 			const d = new Date()
 			console.log(`time ${d.getMinutes()}:${d.getSeconds()}:${d.getMilliseconds()} | delta = ${delta}`)
-			console.log(`pageYOffst: ${e.view.pageYOffset}`)
-			console.log(`newy: ${Math.round(newy)} | oldy: ${Math.round(oldy)}`)
 			oldy = newy
 			oldtime = newtime
 			break;
