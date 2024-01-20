@@ -87,7 +87,7 @@ function preventDefault(e) {
 			break;
 		case ('wheel'):
 			e.preventDefault(); // prevent default scroll/touchmove behaviour
-			window.scrollBy({ top: .5 * e.deltaY * scrollFactor/*, behavior: 'smooth'*/ });
+			window.scrollBy({ top: .25 * e.deltaY * scrollFactor/*, behavior: 'smooth'*/ });
 			break;
 		case ('touchmove'):
 			newy = e.touches[0].clientY
