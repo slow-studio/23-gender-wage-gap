@@ -25,6 +25,7 @@ let oldtime = 0
 let newy = 0
 let newtime = 0
 let delta = newy - oldy
+let oldtouchtimestamp = 0
 
 /* function to define custom scroll-behaviour on mouse/tap events */
 function preventDefault(e) {
@@ -100,9 +101,13 @@ function preventDefault(e) {
 				delta = deltalimit * delta / Math.abs(delta)
 			}
 			e.preventDefault()
+			const d = new Date()
+			if(e.timeStamp - oldtouchtimestamp > 100) {
 			window.scrollBy({ top: -delta * scrollFactor/*, behavior: 'smooth'*/ })
+			}
 			oldy = newy
 			oldtime = newtime
+			oldtouchtimestamp = e.timeStamp
 			break;
 	}
 	
