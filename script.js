@@ -108,11 +108,7 @@ function preventDefault(e) {
 				console.log(`\n\n\n\nwon't execute scrollBy for this next value of delta\n(because it is likely to cause jumpy behaviour)`)
 			} else {
 				if(delta > 0 /* person is trying to scroll up */) scrollFactor = scrollFactorAtTop
-				window.scrollTo({
-					/* info: https://developer.mozilla.org/en-US/docs/Web/API/Window/scrollTo */
-					top: currentlyAt + (-delta * scrollFactor),
-					behavior: "instant",
-				})
+				window.scrollBy({ top: -delta * scrollFactor/*, behavior: 'smooth'*/ })
 			}
 			const d = new Date()
 			console.log(`time ${d.getMinutes()}:${d.getSeconds()}:${d.getMilliseconds()} | delta = ${delta}`)
