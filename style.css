@@ -89,9 +89,13 @@ h2 {
     margin-top: 2.25rem;
 }
 h3 {
+    margin-top: 2rem;
     text-align: left;
     font-size: 80%;
     font-weight: bold;
+}
+h3::before {
+    content: '☞ ';
 }
 
 p.author {
