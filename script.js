@@ -110,11 +110,7 @@ function preventDefault(e) {
 			else {
 				if(delta > 0 /* person is trying to scroll up */) scrollFactor = scrollFactorAtTop
 				console.log(`scrollTo wants to go to: ${currentlyAt + (-delta * scrollFactor)}`)
-				window.scrollTo({
-					/* info: https://developer.mozilla.org/en-US/docs/Web/API/Window/scrollTo */
-					top: currentlyAt + (-delta * scrollFactor),
-					behavior: "instant",
-				})
+				window.scrollBy({ top: -delta * scrollFactor/*, behavior: 'smooth'*/ })
 				console.log(`currently at: ${document.documentElement.scrollTop}`)
 			}
 			const d = new Date()
