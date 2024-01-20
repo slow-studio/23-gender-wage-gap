@@ -16,6 +16,8 @@ body {
     font-size:150%;
     color: #222;
     background-color: var(--paper);
+    opacity: 0;
+    transition: opacity 1000ms ease-in-out 0ms;
 }
 
 body > * {

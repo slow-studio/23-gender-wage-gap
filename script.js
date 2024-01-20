@@ -154,3 +154,7 @@ function disableScroll() {
 
 // when the script loads, call the disableScroll() function
 disableScroll();
+
+document.body.onload = function() {
+	setInterval(() => document.body.style.opacity = 1, 1500)
+}
