@@ -44,8 +44,8 @@
 
 		<div id="articleText">
 
-			<p id="mobilenotice" style="display: none; text-align: center; font-style: italic; ">
-				— This project is meant to be experienced on a phone. It will not work as intended here. — 
+			<p style="font-style: italic;">
+				This project <span id="mobilenotice" style="display: none;">is meant to be experienced on a mobile phone : it will not work as intended on a larger screen. Also: it</span> glitches (gloriously) on fancier iPhones. Since we’re not smart enough to code against Apple’s &ldquo;modern&rdquo; design decisions, we’ve given up trying to fix it. Help, welcome.
 			</p>
 
 			<p>
@@ -204,9 +204,9 @@
 	<script>
 		document.body.onload = function() {
 			if(window.innerWidth > 640) {
-				document.getElementById('mobilenotice').style.display = 'block'	
+				document.getElementById("mobilenotice").style.display = "inline"	
 			}
-			document.body.style.display = 'block'
+			document.body.style.display = "block"
 			setInterval(() => {
 				document.body.style.opacity = 1
 			}, 1500)
