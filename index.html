@@ -202,7 +202,8 @@
 	<!-- show #mobilenotice -->
 	<script>
 		document.body.onload = function() {
-			if(window.innerWidth > 640) {
+
+			if(window.innerWidth > 640 && window.innerHeight > 640) {
 				document.getElementById("mobilenotice").style.display = "inline"	
 			}
 			document.body.style.display = "block"
