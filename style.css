@@ -7,6 +7,7 @@
     --paper-transparent: rgba(255,250,240,.9);
     --blue: rgb(169,203,227);
     --yellow: #ffcc00;
+    --black: rgb(51,50,48)
 }
 
 body {
@@ -14,7 +15,7 @@ body {
     text-align: center;
     line-height: 1.5;
     font-size:150%;
-    color: #222;
+    color: var(--black);
     background-color: var(--paper);
     display: none;
     opacity: 0;
@@ -38,7 +39,7 @@ body > * {
     top:0;
     left: 0;
     text-align: left; 
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid var(--black);
     /* display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -52,6 +53,10 @@ body > * {
     margin: 0;
     font-size: 1rem;
     text-align: left;
+    margin-top: none;
+}
+#header h2::before {
+    content: '';
 }
 
 /* #header p {
@@ -70,37 +75,35 @@ body > * {
 #content > #articleText > * {
     margin-left: auto; margin-right: auto;
 }
-h1,h2,h3,p,.infogram-embed,iframe {
+
+h1,h2,p,.infogram-embed,iframe {
     width: 90vw;
     max-width: 40rem;
     margin-left: auto; margin-right: auto;
 }
 
 h1 {
-    font-size: 135%;
+    font-size: 1.9rem;
     line-height: 108%; 
     padding-top: 1rem; padding-bottom: 1rem;
-    border-top: 1px solid black; border-bottom: 1px solid black;
+    border-top: 1px solid var(--black); border-bottom: 1px solid var(--black);
 }
 
 h2 {
-    font-size: 95%;
+    margin-top: 2rem;
+    font-size: 1.45rem;
     text-align: left;
     margin-top: 2.25rem;
 }
-h3 {
-    margin-top: 2rem;
-    text-align: left;
-    font-size: 80%;
-    font-weight: bold;
-}
-h3::before {
+h2::before {
     content: '☞ ';
+    position: relative;
+    top: 1.5px;
 }
 
 p.author {
     text-align: center;
-    font-size: 1rem;
+    font-size: 1.15rem;
 }
 p+h1 {
     margin-top: -.75rem;
@@ -115,7 +118,7 @@ hr {
 }
 
 p {
-    font-size: 70%;
+    font-size: 1.15rem;
     text-align: left;
 }
 
@@ -154,7 +157,7 @@ img.fullWidthImage {
 
 #footer {
     margin-left: auto; margin-right: auto;
-    border-top: 1px solid black;
+    border-top: 1px solid var(--black);
     width :fit-content;
     padding-top: 1rem;
     margin-bottom: 3rem;
