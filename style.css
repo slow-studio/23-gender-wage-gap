@@ -123,16 +123,17 @@ p {
 }
 
 #aboutProject {
+    z-index: 10;
     position: fixed;
     right: 0; left: 0;
     bottom: /*placeholder */ calc(-100vh);
     transition: bottom 600ms ease-in 0ms;
     /* background-color: #fcc000; */
     text-align: center;
-    font-size: 85%;
 }
 
 #aboutProject p {
+    font-size: 1rem;
     background-color: var(--yellow);
     border-top: 4px solid var(--paper);
     border-bottom: 4px solid var(--paper);
